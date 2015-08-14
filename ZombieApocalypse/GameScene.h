@@ -21,6 +21,8 @@
 @property SKSpriteNode *Shape2;
 @property SKSpriteNode *Shape3;
 @property SKSpriteNode *Shape4;
+@property NSMutableString *myString;
+@property SKLabelNode *myLabel;
 
 
 -(void)addMonster;

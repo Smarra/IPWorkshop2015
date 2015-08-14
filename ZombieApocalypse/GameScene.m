@@ -43,6 +43,7 @@ int Bulletproofs = 5;
     _character = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(50, 50)];
     [_character setAnchorPoint:CGPointMake(0.5f, 0.5f)];
     [_character setPosition:CGPointMake( self.frame.size.width/2, self.frame.size.height * 0.15)];
+    _character.name= @"nameCharacter";
     
 //    _character.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_character.size];
 //    _character.physicsBody.dynamic = YES;
@@ -62,6 +63,14 @@ int Bulletproofs = 5;
     
 //    [self addChild:_background];
     [self addChild:_foreground];
+
+//    NSString *sir = @"123";
+//    NSMutableString *NewString = [[NSMutableString alloc] init];
+//    
+//    [NewString appendString:sir];
+//    [NewString appendString:@"4"];
+//    
+//    NSLog(@"%@",NewString);
 
     
     //Adaugam scorul
@@ -90,11 +99,25 @@ int Bulletproofs = 5;
     _Shape3.position = CGPointMake(self.frame.size.width *0.55, self.frame.size.height *0.05);
     _Shape4.position = CGPointMake(self.frame.size.width *0.65, self.frame.size.height *0.05);
     
+    _Shape1.name = @"nameShape1";
+    _Shape2.name = @"nameShape2";
+    _Shape3.name = @"nameShape3";
+    _Shape4.name = @"nameShape4";
+    
     [self addChild:_Shape1];
     [self addChild:_Shape2];
     [self addChild:_Shape3];
     [self addChild:_Shape4];
     
+    
+    //modificam myLabel si myString
+    _myString = [[NSMutableString alloc] init];
+    _myLabel = [[SKLabelNode alloc] init];
+    _myLabel.fontColor = [SKColor greenColor];
+    _myLabel.fontSize = 12;
+    _myLabel.fontName = @"Chalkduster";
+    _myLabel.position = CGPointMake(self.frame.size.width * 0.6, self.frame.size.height * 0.93);
+    [self addChild: _myLabel];
     
 }
 
@@ -104,9 +127,51 @@ int Bulletproofs = 5;
     
     
     UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self.view];
+    CGPoint location = [touch locationInNode:self];
+
+    [self enumerateChildNodesWithName:@"nameShape1" usingBlock:^(SKNode *  node, BOOL * stop) {
+        
+        if( (SKSpriteNode *)node == (SKSpriteNode *)[self nodeAtPoint:location] )
+        {
+            NSLog(@"YASSS");
+            [_myString appendString:[NSMutableString stringWithFormat:@"%d", 1]];
+            _myLabel.text = [NSMutableString stringWithFormat:@"%@", _myString ];
+            NSLog(@"%@ %@", _myString, _myLabel.text);
+        }
+    }];
     
-    if( location.x > 185 && directie<4)
+    [self enumerateChildNodesWithName:@"nameShape2" usingBlock:^(SKNode *  node, BOOL * stop) {
+        
+        if( (SKSpriteNode *)node == (SKSpriteNode *)[self nodeAtPoint:location] )
+        {
+            [_myString appendString:[NSMutableString stringWithFormat:@"%d", 2]];
+            _myLabel.text = [NSMutableString stringWithFormat:@"%@", _myString ];
+        }
+    }];
+    
+    [self enumerateChildNodesWithName:@"nameShape3" usingBlock:^(SKNode *  node, BOOL * stop) {
+        
+        if( (SKSpriteNode *)node == (SKSpriteNode *)[self nodeAtPoint:location] )
+        {
+            [_myString appendString:[NSMutableString stringWithFormat:@"%d", 3]];
+            _myLabel.text = [NSMutableString stringWithFormat:@"%@", _myString ];
+        }
+    }];
+    
+    [self enumerateChildNodesWithName:@"nameShape4" usingBlock:^(SKNode *  node, BOOL * stop) {
+        
+        if( (SKSpriteNode *)node == (SKSpriteNode *)[self nodeAtPoint:location] )
+        {
+            [_myString appendString:[NSMutableString stringWithFormat:@"%d", 4]];
+            _myLabel.text = [NSMutableString stringWithFormat:@"%@", _myString ];
+        }
+    }];
+    
+    UITouch *touch1 = [touches anyObject];
+    CGPoint location1 = [touch1 locationInView:self.view];
+    
+    if(location1.y < self.view.frame.size.height * 0.92)
+    if( location1.x > self.view.frame.size.width/2 && directie<4)
     {
         if(directie == 0)
             [_character runAction:[SKAction moveToX:0.42f * self.frame.size.width duration:0.2]];
@@ -118,7 +183,7 @@ int Bulletproofs = 5;
             [_character runAction:[SKAction moveToX:0.66f * self.frame.size.width duration:0.2]];
         directie++;
     }
-    else if(location.x <= 185 && directie>0)
+    else if(location1.x <= self.view.frame.size.width/2 && directie>0)
     {
         if(directie == 1)
             [_character runAction:[SKAction moveToX:0.34f * self.frame.size.width duration:0.2]];
@@ -132,30 +197,20 @@ int Bulletproofs = 5;
         directie--;
     }
     
+    
+    
 }
 
 -(void)addMonster{
     // Create sprite
     SKSpriteNode *monster = [SKSpriteNode spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(20, 20)];
     monster.name = @"nameMonster";
-    monster.anchorPoint = CGPointMake(0.5f, 0.5f);
+    monster.anchorPoint = CGPointMake(0.5f, 1.f);
     monster.position = CGPointMake(self.frame.size.width/2, self.frame.size.height);
     
-    //Determine speed of the monster
-//    int minDuration = 2.0;
-//    int maxDuration = 4.0;
-//    int rangeDuration = maxDuration - minDuration;
-//    int actualDuration = (arc4random() % rangeDuration) + minDuration;
-    
     //Create actions
-    SKAction *actionMove = [SKAction moveToY:120 duration:2];
+    SKAction *actionMove = [SKAction moveToY:120 duration:10];
     [monster runAction:actionMove];
-    
-//    monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-//    monster.physicsBody.dynamic = YES;
-//    monster.physicsBody.categoryBitMask = monsterCategory;
-//    monster.physicsBody.contactTestBitMask = characterCategory;
-//    monster.physicsBody.collisionBitMask = 0;
     
     
     // Determine where to spawn the monster along the Y axis
@@ -184,6 +239,27 @@ int Bulletproofs = 5;
     }
     
     monster.position = CGPointMake(pozX, self.frame.size.height);
+    
+    //Adaugam cheia dupa care cauta, linia pe care se afla monstrul
+    monster.userData = [[NSMutableDictionary alloc] init];
+    [monster.userData setValue: [NSString stringWithFormat:@"%d", lane] forKey:@"Nr_linie"];
+    
+    //Cream labelul monsterului
+    SKLabelNode *monsterLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    monsterLabel.fontSize = 20;
+    monsterLabel.name = @"nameLabel";
+    
+    int numarDeCuvinte = 3+ (arc4random()%9998 + arc4random()%3421)%5;
+    
+    NSMutableString *aux = [[NSMutableString alloc] init];
+    for(int i=1; i<=numarDeCuvinte; i++)
+    {
+        [aux appendString:[NSMutableString stringWithFormat:@"%d", 1+(arc4random()%9998 + arc4random()%3421)%4]];
+    }
+    
+    monsterLabel.text = aux;
+    
+    [monster addChild:monsterLabel];
     [self addChild:monster];
 }
 
@@ -228,12 +304,37 @@ int Bulletproofs = 5;
     [self enumerateChildNodesWithName:@"nameMonster" usingBlock:^(SKNode * _Nonnull node, BOOL * _Nonnull stop) {
         if ( node.position.y  <= 150 && Bulletproofs>0)
         {
-            Bulletproofs --;
+//            Bulletproofs --;
             NSLog(@"%d\n", Bulletproofs);
             [node removeFromParent];
 
             _scorePoints.text = [NSString stringWithFormat:@"Bulletproofs: %d",Bulletproofs];
         }
+        
+        [node enumerateChildNodesWithName:@"nameLabel" usingBlock:^(SKNode * _Nonnull copil, BOOL * _Nonnull stop) {
+            if ( copil != nil)
+            {
+                SKLabelNode *aux = (SKLabelNode *)copil;
+                if([node.userData valueForKey:@"Nr_linie"] == [NSString stringWithFormat:@"%d",directie])
+                {
+                    NSLog(@"%@ %@ %@",aux.text, _myLabel.text, _myString);
+                    NSMutableString *auxString = [[NSMutableString alloc] init];
+                    if([_myLabel.text isEqualToString:aux.text])
+                    {
+                        NSLog(@"YAS");
+                        [node removeFromParent];
+                        _myString = [NSMutableString stringWithFormat:@"%@", auxString];
+                        _myLabel.text = [NSString stringWithFormat:@"%@", auxString];
+                    }
+                    else if(_myLabel.text.length >= aux.text.length)
+                    {
+                        _myString = [NSMutableString stringWithFormat:@"%@", auxString];
+                        _myLabel.text = [NSString stringWithFormat:@"%@", auxString];
+                    }
+                }
+        
+            }
+        }];
         
         if(Bulletproofs <=0)
         {
@@ -241,10 +342,13 @@ int Bulletproofs = 5;
             _scorePoints.position = CGPointMake(self.frame.size.width/2 , self.frame.size.height/2);
             _scorePoints.text = @"GAME OVER";
         }
+        
     }];
     
+    //Schimbam myLabel
+    
     //Numarul de monstrii creste la fiecare 300 de frameuri
-    if(divided >=60 && incrementAux % 300 == 0 && Bulletproofs>0)
+    if(divided >=90 && incrementAux % 400 == 0 && Bulletproofs>0)
     {
         incrementAux = 0;
         divided-=10;
