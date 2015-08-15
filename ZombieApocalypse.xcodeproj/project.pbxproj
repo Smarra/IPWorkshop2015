@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B45713C1B78CBA200C23151 /* fundal.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1B45713B1B78CBA200C23151 /* fundal.atlas */; };
 		1BA3C2C71B78D90600339BC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3C2C61B78D90600339BC9 /* main.m */; };
 		1BA3C2CA1B78D90600339BC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3C2C91B78D90600339BC9 /* AppDelegate.m */; };
 		1BA3C2CD1B78D90600339BC9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3C2CC1B78D90600339BC9 /* GameScene.m */; };
@@ -18,6 +17,8 @@
 		1BA3C2DA1B78D90600339BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA3C2D81B78D90600339BC9 /* LaunchScreen.storyboard */; };
 		1BA3C2E51B78D90600339BC9 /* ZombieApocalypseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3C2E41B78D90600339BC9 /* ZombieApocalypseTests.m */; };
 		1BA3C2F01B78D90600339BC9 /* ZombieApocalypseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3C2EF1B78D90600339BC9 /* ZombieApocalypseUITests.m */; };
+		1BCF999A1B7EB58D00331666 /* atlasExplozie.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1BCF99991B7EB58D00331666 /* atlasExplozie.atlas */; };
+		1BD4AB701B7E1CCE0057F4D5 /* FundalSprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1BD4AB6F1B7E1CCE0057F4D5 /* FundalSprites.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B45713B1B78CBA200C23151 /* fundal.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = fundal.atlas; path = ../fundal.atlas; sourceTree = "<group>"; };
 		1BA3C2C21B78D90500339BC9 /* ZombieApocalypse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieApocalypse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA3C2C61B78D90600339BC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BA3C2C81B78D90600339BC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		1BA3C2EB1B78D90600339BC9 /* ZombieApocalypseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZombieApocalypseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA3C2EF1B78D90600339BC9 /* ZombieApocalypseUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZombieApocalypseUITests.m; sourceTree = "<group>"; };
 		1BA3C2F11B78D90600339BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BCF99991B7EB58D00331666 /* atlasExplozie.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = atlasExplozie.atlas; sourceTree = "<group>"; };
+		1BD4AB6F1B7E1CCE0057F4D5 /* FundalSprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = FundalSprites.atlas; path = ../FundalSprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,8 @@
 		1BA3C2B91B78D90500339BC9 = {
 			isa = PBXGroup;
 			children = (
-				1B45713B1B78CBA200C23151 /* fundal.atlas */,
+				1BCF99991B7EB58D00331666 /* atlasExplozie.atlas */,
+				1BD4AB6F1B7E1CCE0057F4D5 /* FundalSprites.atlas */,
 				1BA3C2C41B78D90500339BC9 /* ZombieApocalypse */,
 				1BA3C2E31B78D90600339BC9 /* ZombieApocalypseTests */,
 				1BA3C2EE1B78D90600339BC9 /* ZombieApocalypseUITests */,
@@ -257,11 +260,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B45713C1B78CBA200C23151 /* fundal.atlas in Resources */,
 				1BA3C2CF1B78D90600339BC9 /* GameScene.sks in Resources */,
 				1BA3C2DA1B78D90600339BC9 /* LaunchScreen.storyboard in Resources */,
+				1BD4AB701B7E1CCE0057F4D5 /* FundalSprites.atlas in Resources */,
 				1BA3C2D71B78D90600339BC9 /* Assets.xcassets in Resources */,
 				1BA3C2D51B78D90600339BC9 /* Main.storyboard in Resources */,
+				1BCF999A1B7EB58D00331666 /* atlasExplozie.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

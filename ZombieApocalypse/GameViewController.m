@@ -44,6 +44,7 @@
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.delegate = self;
     
     // Present the scene.
     [skView presentScene:scene];
@@ -72,5 +73,6 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
 
 @end
